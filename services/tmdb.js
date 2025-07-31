@@ -40,7 +40,7 @@ export const getPopularMovies = async () => {
   return data;
 };
 
-export const getMovies = async (breakpoints) => {
+export const getMovies = async () => {
   const res = await fetch(`${API_URL}/discover/movie`, getOptions);
 
   if (!res.ok) {
@@ -66,3 +66,31 @@ export const getMoviePage = async (page) => {
 
   return data;
 };
+
+export const getMovieGenre = async () => {
+  const res = await fetch(
+    `${API_URL}/genre/movie/list?language=pt-BR`,
+    getOptions
+  );
+
+  const data = await res.json();
+
+  return data;
+};
+
+export const getMovieByGenre = async (gender) => {
+  const res = await fetch(
+    `${API_URL}/discover/movie?language=pt-BR&with_genres=${gender}`,
+    getOptions
+  );
+
+  if (!res.ok) {
+    console.error("Erro no fetch da API genres");
+  }
+
+  const data = await res.json();
+
+  return data;
+};
+
+//https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_average.desc&without_genres=99,10755&vote_count.gte=200
