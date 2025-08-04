@@ -29,10 +29,10 @@ const Header = () => {
         </div>
         <div className="flex gap-2">
           <button className="bg-violet-600 w-28 h-12 rounded-2xl active:bg-violet-700 hover:bg-violet-500 transition-all font-bold text-[14pt] cursor-pointer">
-            Entrar
+            {/* Entrar */}
           </button>
           <button className="bg-violet-600 w-28 h-12 rounded-2xl active:bg-violet-700 hover:bg-violet-500 transition-all font-bold text-[14pt] cursor-pointer">
-            Criar conta
+            {/* Criar conta */}
           </button>
         </div>
       </header>

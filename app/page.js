@@ -1,21 +1,11 @@
 import MovieList from "@/components/MovieList";
-import {
-  getMovieByGenre,
-  getMovieGenre,
-  getPopularMovies,
-  getTopRatedMovie,
-} from "@/services/tmdb";
-import { Medal, PlayIcon, PlusCircle, Star, ThumbsUp } from "lucide-react";
-import { Play } from "next/font/google";
+import { getMovieGenre, getPopularMovies } from "@/services/tmdb";
+import { Medal, PlayIcon, Star, ThumbsUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
   const popularMovies = await getPopularMovies();
-  const topRatedMovie = await getTopRatedMovie();
-  const moviesAnim = await getMovieByGenre(16);
-  const moviesRomance = await getMovieByGenre(10749);
-  const moviesMistery = await getMovieByGenre(9648);
 
   const genres = await getMovieGenre();
 
@@ -51,10 +41,12 @@ export default async function Home() {
               </div>
             </div>
             <div className="flex items-center justify-center font-bold gap-4">
-              <button className="flex gap-0.5 items-center justify-center bg-violet-500 hover:opacity-80 active:opacity-100 cursor-pointer text-white rounded-2xl p-2 transition-all">
-                <PlayIcon fill="white" />
-                <p>Ver mais</p>
-              </button>
+              <Link href={`movie/${popularMovies.results[0].id}`}>
+                <button className="flex gap-0.5 items-center justify-center bg-violet-500 hover:opacity-80 active:opacity-100 cursor-pointer text-white rounded-2xl p-2 transition-all">
+                  <PlayIcon fill="white" />
+                  <p>Ver mais</p>
+                </button>
+              </Link>
               <button className="flex gap-0.5 items-center justify-center bg-neutral-500 hover:opacity-80 active:opacity-100 cursor-pointer rounded-2xl p-2 transition-all">
                 <Star fill="white" /> <p>Favoritos</p>
               </button>
