@@ -15,12 +15,14 @@ const MovieList = async ({ genre, title }) => {
             key={item.id}
             className="shrink-0 hover:scale-105 w-40  h-60 flex justify-center items-center cursor-pointer transition-all"
           >
-            <Image
-              src={`https://image.tmdb.org/t/p/w400/${item.poster_path}`}
-              width={160}
-              height={300}
-              alt={item.title}
-            />
+            <Link href={`/movie/${item.id}`}>
+              <Image
+                src={`https://image.tmdb.org/t/p/w400/${item.poster_path}`}
+                width={160}
+                height={300}
+                alt={item.title}
+              />
+            </Link>
           </li>
         ))}
         <div className="w-40 h-60 flex items-center bg-transparent">
